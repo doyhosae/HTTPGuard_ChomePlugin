@@ -1,7 +1,17 @@
 {
   "manifest_version": 3,
   "name": "HTTP Guard - 소중한 내 개인정보를 지켜줘",
-  "version": "1.0",
+  "version": "1.1",
+  "description": "HTTPS 프로토콜로 자동 리다이렉션됩니다.",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon_16.png",
+      "48": "icon_48.png",
+      "128": "icon_128.png"
+    }
+  },
   "icons": {
     "16": "icon_16.png",
     "48": "icon_48.png",
@@ -9,8 +19,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content_script.js"]
+      "matches": ["http://*/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_start"
     }
   ]
 }
